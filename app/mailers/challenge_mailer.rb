@@ -18,7 +18,7 @@ class ChallengeMailer < ApplicationMailer
     @challenge = challenge
     @discount_code = discount_code
 
-    mail(to: challenge.email, from: ENV["POSTMARK_FROM_ADDRESS"], subject: "#NoNewThings: Challenge Accepted!")
+    mail(to: challenge.email, from: ENV["POSTMARK_FROM_ADDRESS"], subject: "Challenge Accepted - cash earned!")
   end
 
   def hello
