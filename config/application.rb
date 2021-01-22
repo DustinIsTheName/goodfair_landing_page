@@ -13,7 +13,7 @@ module GoodfairLandingPage
     config.load_defaults 6.0
 
     config.hosts << "28a83e009172.ngrok.io"
-    # config.hosts << "9056ca6ac0fc.ngrok.io"
+    config.hosts << "goodfair.herokuapp.com"
 
     ShopifyAPI::Base.site = "https://#{ENV["API_KEY"]}:#{ENV["PASSWORD"]}@#{ENV["SHOPIFY_URL"]}/admin"
     ShopifyAPI::Base.api_version = '2020-04'
