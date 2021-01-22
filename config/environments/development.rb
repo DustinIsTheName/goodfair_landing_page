@@ -47,7 +47,7 @@ Rails.application.configure do
 
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
-  config.action_mailer.asset_host = 'https://9056ca6ac0fc.ngrok.io'
+  config.action_mailer.asset_host = 'https://28a83e009172.ngrok.io'
 
   config.action_mailer.perform_caching = false
 
