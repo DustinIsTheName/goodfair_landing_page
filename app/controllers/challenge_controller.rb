@@ -117,35 +117,35 @@ class ChallengeController < ApplicationController
       ]
     )
 
-    challenge = Challenge.find_by_email params["email_address"]
-    first_name = params["first_name"]
-    email = params["email_address"]
-    friend_names = params["challenge_friend_name"].filter{|e| !e.blank?}
-    friend_emails = params["challenge_friend_email"].filter{|e| !e.blank?}
+    # challenge = Challenge.find_by_email params["email_address"]
+    # first_name = params["first_name"]
+    # email = params["email_address"]
+    # friend_names = params["challenge_friend_name"].filter{|e| !e.blank?}
+    # friend_emails = params["challenge_friend_email"].filter{|e| !e.blank?}
 
-    unless challenge
-      unless email.blank? or friend_emails.count == 0
+    # unless challenge
+    #   unless email.blank? or friend_emails.count == 0
 
-        challenge = Challenge.new
-        challenge.email = email
-        hashed_array = []
-        hashed_emails = {}
+    #     challenge = Challenge.new
+    #     challenge.email = email
+    #     hashed_array = []
+    #     hashed_emails = {}
 
-        friend_emails.each do |e|
-          hashed_emails[Digest::MD5.hexdigest(e)] = false
-          hashed_array << Digest::MD5.hexdigest(e)
-        end
+    #     friend_emails.each do |e|
+    #       hashed_emails[Digest::MD5.hexdigest(e)] = false
+    #       hashed_array << Digest::MD5.hexdigest(e)
+    #     end
 
-        challenge.friend_email_hashs = hashed_emails
+    #     challenge.friend_email_hashs = hashed_emails
 
-        if challenge.save
-          puts Colorize.green("challenge saved for #{email}")
+    #     if challenge.save
+    #       puts Colorize.green("challenge saved for #{email}")
 
-          ChallengeMailer.challenge(challenge, hashed_array, friend_emails, first_name).deliver
-        end
+    #       ChallengeMailer.challenge(challenge, hashed_array, friend_emails, first_name).deliver
+    #     end
 
-      end
-    end
+    #   end
+    # end
 
     render json: params
   end
