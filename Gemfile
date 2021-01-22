@@ -14,6 +14,7 @@ end
 gem 'klaviyo'
 gem 'figaro'
 gem 'shopify_app', "~> 12.0.7"
+gem 'postmark-rails'
 
 # Use Puma as the app server
 gem 'puma', '~> 4.1'

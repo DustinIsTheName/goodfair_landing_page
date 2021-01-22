@@ -11,14 +11,24 @@ class ChallengeMailer < ApplicationMailer
     @hashed_email = hash
     @name = name
 
-    mail(to: email, from: "challenge@goodfair.com", subject: "You’ve Been Challenged!")
+    mail(to: email, from: ENV["POSTMARK_FROM_ADDRESS"], subject: "You’ve Been Challenged!")
   end
 
   def reward(challenge, discount_code)
     @challenge = challenge
     @discount_code = discount_code
 
-    mail(to: challenge.email, from: "challenge@goodfair.com", subject: "#NoNewThings: Challenge Accepted!")
+    mail(to: challenge.email, from: ENV["POSTMARK_FROM_ADDRESS"], subject: "#NoNewThings: Challenge Accepted!")
+  end
+
+  def hello
+    mail(
+      subject: 'Hello from Postmark',
+      to: 'dustin@wittycreative.com',
+      from: 'dustin@wittycreative.com',
+      html_body: '<strong>Hello</strong> dear Postmark user.',
+      track_opens: 'true',
+      message_stream: 'outbound')
   end
 
 end
