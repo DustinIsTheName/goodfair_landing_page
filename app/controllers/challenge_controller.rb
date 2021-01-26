@@ -20,6 +20,7 @@ class ChallengeController < ApplicationController
       clothing_subcategory << "Outerwear" if params["pledge_subcategory_outerwear"]
       clothing_subcategory << "T-shirts" if params["pledge_subcategory_t_shirts"]
       clothing_subcategory << "Other: #{params["pledge_subcategory_clothing_other_elaboration"]}" if params["pledge_subcategory_clothing_other"]
+      properties["cat_clothing"] = true
       properties["clothing"] = clothing_subcategory
     end
 
@@ -33,6 +34,7 @@ class ChallengeController < ApplicationController
       shoes_accessories_subcategory << "Hair Accessories" if params["pledge_subcategory_hair_accessories"]
       shoes_accessories_subcategory << "Cold Weather Accessories" if params["pledge_subcategory_cold_weather_accessories_scarves_gloves"]
       shoes_accessories_subcategory << "Other: #{params["pledge_subcategory_shoes_accessories_other_elaboration"]}" if params["pledge_subcategory_shoes_accessories_other"]
+      properties["cat_shoes_accessories"] = true
       properties["shoes_accessories"] = shoes_accessories_subcategory
     end
 
@@ -46,6 +48,7 @@ class ChallengeController < ApplicationController
       home_goods_subcategory << "Kitchenware" if params["pledge_subcategory_kitchenware"]
       home_goods_subcategory << "Holiday Seasonal Decor" if params["pledge_subcategory_holiday_seasonal_decor"]
       home_goods_subcategory << "Other: #{params["pledge_subcategory_home_goods_other_elaboration"]}" if params["pledge_subcategory_home_goods_other"]
+      properties["cat_home_goods"] = true
       properties["home_goods"] = home_goods_subcategory
     end
 
@@ -56,6 +59,7 @@ class ChallengeController < ApplicationController
       electronics_subcategory << "Web Cam" if params["pledge_subcategory_web_cam"]
       electronics_subcategory << "Appliances" if params["pledge_subcategory_appliances"]
       electronics_subcategory << "Other: #{params["pledge_subcategory_electronics_other_elaboration"]}" if params["pledge_subcategory_electronics_other"]
+      properties["cat_electronics"] = true
       properties["electronics"] = electronics_subcategory
     end
 
@@ -66,6 +70,7 @@ class ChallengeController < ApplicationController
       single_uses_plastic_subcategory << "Toothbrushes" if params["pledge_subcategory_toothbrushes"]
       single_uses_plastic_subcategory << "Straws" if params["pledge_subcategory_straws"]
       single_uses_plastic_subcategory << "Other: #{params["pledge_subcategory_single_use_plastic_other_elaboration"]}" if params["pledge_subcategory_single_use_plastic_other"]
+      properties["cat_single_use_plastic"] = true
       properties["single_use_plastic"] = single_uses_plastic_subcategory
     end
 
@@ -75,6 +80,7 @@ class ChallengeController < ApplicationController
       single_uses_paper_subcategory << "Paper Plates" if params["pledge_subcategory_paper_plates"]
       single_uses_paper_subcategory << "Printer Paper" if params["pledge_subcategory_printer_paper"]
       single_uses_paper_subcategory << "Other: #{params["pledge_subcategory_single_use_paper_other_elaboration"]}" if params["pledge_subcategory_single_use_paper_other"]
+      properties["cat_single_use_paper"] = true
       properties["single_use_paper"] = single_uses_paper_subcategory
     end
 
@@ -85,6 +91,7 @@ class ChallengeController < ApplicationController
       gift_secondhand_subcategory << "Holidays" if params["pledge_subcategory_holidays"]
       gift_secondhand_subcategory << "Wedding Gifts" if params["pledge_subcategory_wedding_gifts"]
       gift_secondhand_subcategory << "Other: #{params["pledge_subcategory_gift_other_elaboration"]}" if params["pledge_subcategory_gift_other"]
+      properties["cat_gift_secondhand"] = true
       properties["gift_secondhand"] = gift_secondhand_subcategory
     end
 
@@ -94,8 +101,8 @@ class ChallengeController < ApplicationController
       transportation_subcategory << "Bicycle" if params["pledge_subcategory_bicycle"]
       transportation_subcategory << "Walk" if params["pledge_subcategory_walk"]
       transportation_subcategory << "Bus Subway" if params["pledge_subcategory_public_transportation_bus_subway"]
-
       transportation_subcategory << "Other: #{params["pledge_subcategory_transportation_other_elaboration"]}" if params["pledge_subcategory_transportation_other"]
+      properties["cat_transportation"] = true
       properties["transportation"] = transportation_subcategory
     end
 
