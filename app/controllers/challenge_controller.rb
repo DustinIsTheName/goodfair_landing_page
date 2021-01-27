@@ -124,6 +124,19 @@ class ChallengeController < ApplicationController
       ]
     )
 
+    url = URI("https://stamped.io/api/v2/77822/rewards/activities?email=#{challenge.email}&campaignId=12662")
+    # url = URI("https://stamped.io/api/auth/check")
+
+    https = Net::HTTP.new(url.host, url.port);
+    https.use_ssl = true
+
+    request = Net::HTTP::Post.new(url)
+    request["Content-Type"] = "application/json"
+    request["Authorization"] = "Basic ENV["STAMPED_TOKEN"]"
+
+    response = https.request(request)
+    puts response.read_body
+
     challenge = Challenge.find_by_email params["email_address"]
     first_name = params["first_name"]
     email = params["email_address"]
@@ -131,6 +144,7 @@ class ChallengeController < ApplicationController
     friend_emails = params["challenge_friend_email"].filter{|e| !e.blank?}
 
     unless challenge
+
       unless email.blank? or friend_emails.count == 0
 
         challenge = Challenge.new
