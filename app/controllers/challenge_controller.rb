@@ -132,7 +132,7 @@ class ChallengeController < ApplicationController
 
     request = Net::HTTP::Post.new(url)
     request["Content-Type"] = "application/json"
-    request["Authorization"] = "Basic ENV["STAMPED_TOKEN"]"
+    request["Authorization"] = "Basic #{ENV["STAMPED_TOKEN"]}"
 
     response = https.request(request)
     puts response.read_body
